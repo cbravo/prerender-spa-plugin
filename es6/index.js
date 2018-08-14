@@ -1,6 +1,6 @@
 const path = require('path')
 const Prerenderer = require('@prerenderer/prerenderer')
-const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer')
+const PuppeteerRenderer = require('@prerenderer/prerenderer/renderers/renderer-puppeteer')
 const { minify } = require('html-minifier')
 
 function PrerenderSPAPlugin (...args) {
@@ -143,9 +143,9 @@ PrerenderSPAPlugin.prototype.apply = function (compiler) {
       })
       .catch(err => {
         PrerendererInstance.destroy()
-        console.error('[prerender-spa-plugin] Unable to prerender all routes!');
-        compilation.errors.push( new Error( '[prerender-spa-plugin] Unable to prerender all routes!' ) );
-        done();
+        console.error('[prerender-spa-plugin] Unable to prerender all routes!')
+        compilation.errors.push(new Error('[prerender-spa-plugin] Unable to prerender all routes!'))
+        done()
       })
   }
 
